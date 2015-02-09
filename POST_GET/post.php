@@ -71,12 +71,12 @@ http://www.yiiframework.com/doc-2.0/guide-helper-url.html //
 
 
 
-///а вот и сам контроллер site/register/'  ///
+//а вот и сам контроллер site/register/'  //
 
        public function actionRegister()
        {
            
-   $name=$_POST['regform']['login'];  --это введенный логин
+   $name=$_POST['regform']['login'];  //это введенный логин
    
         $us=new User;  //это таблица  User из бд
         

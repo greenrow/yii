@@ -7,7 +7,7 @@
                                     
                                     //здесь отображаем id проекта//
                                         <div data-index="<?php echo $key['id']?>" style='height:150px;overflow:hidden;padding:0px;' class='img_projects_div col-md-12 project_info_div'>
-                                            <img  class='img-responsive' src="<?php echo $key['ava']?>" alt="...">
+                                            <img  class='img-responsive' src="<?php echo $key['ava']?>" alt="...">  //здесь указываем путь дял картинки//
 
                                         
                                           

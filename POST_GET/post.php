@@ -2,11 +2,12 @@
 
 //////-------------примеры запросов на jquery (POST или GET)-------------////
 
+<script>
          $('.save_avatar').click(function(){ //событие при клике на элементе
          
                             
                             var url = "index.php?r=project/"; //здесь указывает путь к контролеру
-                            ( в данном случае будет вызван метод action Index)//
+                        //    ( в данном случае будет вызван метод action Index)//
                             
                             //далее стандартные пост запрос с атрибутами
                      var attr_img= $( '.u_avatar img').attr('src');
@@ -15,27 +16,32 @@
                       
                      }
                   );
-                  
-                  пример с указание конкретного действия контроллера
+          
+                 // пример с указание конкретного действия контроллера
                   
                     var url = "index.php?r=project%2Faddfoto"; //  -> здесь указываем котроллер project и его action - addfoto,
-                    название действия указывается с маленькой буквы, а %2F это как я понимаю типо префикса
+                   // название действия указывается с маленькой буквы, а %2F это как я понимаю типо префикса
+                    
+           </script> 
+           
+           
+           
                     
                     
-                    
-                    
-                    
+                 
                     //////-------------примеры запросов на HTML методом POST или GET)-------------////
+                    
                     
                   //Пример формы регистрации//
                   
                   
-<?php use yii\helpers\Url;?>  //это класс помощник для более удобного указание url//
+ <?php   use yii\helpers\Url;  //это класс помощник для более удобного указание url//
+//http://www.yiiframework.com/doc-2.0/guide-helper-url.html //
 
-http://www.yiiframework.com/doc-2.0/guide-helper-url.html //
+
 
 <h2>Регистрация</h2>
-<form action="<?php echo Url::to(['site/register/'])?>" method="POST" name="regform">  //Url::to(['site/register/'])?> - боле еудобная запсь пути к контроллеру и десйтвию
+<form action="<?php echo Url::to(['site/register/'])?>" method="POST" name="regform">  //Url::to(['site/register/'])?> - более удобная запсь пути к контроллеру и десйтвию
 <table width="100%">
     
     <tr>
@@ -71,8 +77,12 @@ http://www.yiiframework.com/doc-2.0/guide-helper-url.html //
 
 
 
-//а вот и сам контроллер site/register/'  //
 
+
+
+/--------/   а вот и сам контроллер site/register/'  ----------//
+
+<?php
        public function actionRegister()
        {
            
@@ -89,11 +99,15 @@ http://www.yiiframework.com/doc-2.0/guide-helper-url.html //
          
          //про Yii::$app->request->post('regform') в самом низу будет ссылка на инфу по запросам//
          
-         $us->attributes=$form_info; //метод attributes содержит все поля таблицы user и автоматически записывает в таблицу user значение введеные в форму регистрации,то есть из $form_info
-         $us->save();  //записываем в таблицу все поля//
-         //отмечу что обращение к таблице User присходит с помощью  класса Active Record ,поэтому мы может использовать методы этого класса//
          
-         ///про AR  http://www.yiiframework.com/doc-2.0/yii-db-activerecord.html //
+         $us->attributes=$form_info; //метод attributes содержит все поля таблицы user и 
+         //автоматически записывает в таблицу user значение введеные в форму регистрации,то есть из $form_info
+         
+         $us->save();  //записываем в таблицу все поля//
+         /*отмечу что обращение к таблице User присходит с помощью  класса Active Record ,поэтому мы может 
+         использовать методы этого класса*/
+         
+         //про AR  http://www.yiiframework.com/doc-2.0/yii-db-activerecord.html //
          
          
                              echo 'you register';

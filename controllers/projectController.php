@@ -13,7 +13,8 @@ public $layout = 'main'; //определяем слой по умолчанию
 public function actionIndex(){  //действие для индекснй страницы
 
 $proj= new Project; //создаем обьект класс Project
-$ava= $proj->get_project_files(); //вызываем его метод (выводит спсиок всех активных проектов//
+$ava= $proj->get_all_publish_proj(); //вызываем его метод (выводит спсиок всех активных проектов//
+
 return $this->render('index',['ava'=>$ava]); //подключаем шаблон index и передаем в него параметр ava,котрый содержит резултата выова метода
 }
 

@@ -1,0 +1,26 @@
+                             <div class='user_avatar_div col-md-8'>
+                                  <p><?php echo Yii::$app->user->identity->name;?></p>
+                                 <div style='padding:0px;'class='col-md-12' >
+                                    <div class='u_avatar col-md-12'>
+
+
+                                    
+                                                <img  class=' col-md-12 img-rounded img-responsive' src=" <?php echo $ava_get?>"/>
+                                         
+                                   </div>
+                              
+                                            <div class='col-md-10 col-md-offset-1 file_upload'>
+                                                                   <span  style='width:100%;' class="glyphicon glyphicon-download" >
+                                                                       <input class='u_avatar_input' type="file"> Загрузить </span>  
+                                             </div>
+                                     
+                                 </div>
+
+                                  
+                               
+
+
+
+                                                                     
+
+                             </div>

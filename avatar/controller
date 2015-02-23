@@ -1,0 +1,66 @@
+     то метод общий для загрузки фото и видео он также испльзуется для загрузки авы пользователя//
+     
+     
+     
+    public function actionAddfoto(){
+        
+        $filetype=[];
+                date_default_timezone_set('Europe/Moscow');
+                  $filedir= 'uploads/'.Yii::$app->user->getid().'/temp/';
+          
+              if(!is_dir($filedir)){
+            mkdir( $filedir);
+        }
+        
+  $type=$_FILES['ufile']['type'];
+      if($type=='image/png' || $type=='image/jpeg' ){
+               
+            /*временая зона*/
+
+             $image_type=substr($_FILES['ufile']['name'],-3);
+
+              $file_date_name=date('dmy').'_'.rand(100,1000).'.'.$image_type;
+
+
+                   $full_filename="$filedir$file_date_name";
+
+              $image=$_FILES['ufile']['tmp_name']; 
+              $uploadfile=  move_uploaded_file($image,$full_filename);
+              if($uploadfile){
+ $filetype['foto']=$full_filename;
+                 return  json_encode($filetype);
+
+              }
+
+
+             }
+    
+    //для видео
+         if($type=='video/mp4' || $type=='video/mts' || $type=='video/vob' || $type=='video/ogg' || $type=='video/swf' || $type=='video/mpg' || $type=='video/avi'    ){
+              
+        
+
+
+
+
+             $image_type=substr($_FILES['ufile']['name'],-3);
+
+              $file_date_name=date('dmy').'_'.rand(100,1000).'.'.$image_type;
+
+
+                   $full_filename="$filedir$file_date_name";
+
+              $image=$_FILES['ufile']['tmp_name']; 
+              $uploadfile=  move_uploaded_file($image,$full_filename);
+              if($uploadfile){
+
+                  $filetype['video']=$full_filename;
+                   return  json_encode($filetype);
+
+              }
+
+    
+            }
+    
+    }
+    

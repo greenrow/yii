@@ -1,0 +1,46 @@
+        
+        //при смене инпута вызываем функцию  set_ajax_foto_html//
+        $('.u_avatar_input').change(function(){
+           set_ajax_foto_html($('.u_avatar'),'.u_avatar_input',"class=' img-rounded img-responsive'");
+            
+           });
+           
+           
+           //функция set_ajax_foto_html //прнимает 3 параметра//
+           
+           
+                      
+           function set_ajax_foto_html(rez_path,input_class,class_var){
+                    var data;
+                    
+                             var url = "index.php?r=projects%2Faddfoto"; //путь к актион//
+
+
+                    data = new FormData();  //FormData() -это для загрузки файлов -можно погуглить)
+                    data.append( 'ufile', $( input_class)[0].files[0] );
+
+
+                    $.ajax({
+                        url: url,
+                        data: data,
+                        processData: false,
+                        contentType:false,
+
+                        type: 'POST',
+                        datatype:'json',
+                        success: function ( data ) {
+                          var rez=$.parseJSON(data);
+                          
+                          if(rez.foto){
+                          
+                           rez_path.html("<img "+class_var+" src='"+rez.foto+"' width='100%'/>");	 
+
+                          }
+                          
+                         
+                        }
+                    });
+
+        }   
+        
+            
